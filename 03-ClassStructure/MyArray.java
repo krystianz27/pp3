@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -43,12 +44,13 @@ public class MyArray {
         int scMax = 0;
         // This line or those 2
         // IntStream.of(array).boxed().collect(Collectors.toCollection(ArrayList::new));
+        Integer[] boxedArray = Arrays.stream(array).boxed().toArray(Integer[]::new); // Change to Integer
+        HashSet<Integer> arrSet = new HashSet<Integer>(Arrays.asList(boxedArray)); // Remove duplicate
+        Integer[] arrayToSort = new Integer[arrSet.size()]; // Convert back to array to sort out
+        arrSet.toArray(arrayToSort);
 
-        Integer[] boxedArray = Arrays.stream(array).boxed().toArray(Integer[]::new);
-        ArrayList<Integer> arrList = new ArrayList<Integer>();
-        Collections.addAll(arrList, boxedArray);
-        Collections.sort(arrList);
-        scMax = arrList.get(arrList.size() - 2);
+        Arrays.sort(arrayToSort);
+        scMax = arrayToSort[arrayToSort.length - 2];
         return scMax;
     }
 
@@ -75,7 +77,7 @@ public class MyArray {
     }
 
     public static void main(String[] args) {
-        int[] arr1 = { 1, 2, 3, 4, 5, 6, 7, 9, 13, 29, 10, 11, 28 };
+        int[] arr1 = { 1, 2, 3, 4, 5, 6, 7, 9, 13, 29, 10, 11, 28, 2, 6, 9, 28, 29 };
         int[] arr2 = { 1, 2, 3, 4, 5, 6, 7, 9, 15, 17, 30, 28, 11 };
         int[][] arr3 = { arr1, arr2 };
         // System.out.println(MyArray.reverse(arr1));
@@ -87,6 +89,7 @@ public class MyArray {
         // System.out.println(MyArray.lastColumn(arr3));
         // System.out.println(Arrays.deepToString(MyArray.swap(arr3)).replace("], ",
         // "]\n"));
-        System.out.println(Arrays.toString(MyArray.two2one(arr3)));
+        // System.out.println(Arrays.toString(MyArray.two2one(arr3)));
+        System.out.println(secondMax(arr1));
     }
 }
