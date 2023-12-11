@@ -1,13 +1,31 @@
 public class BookTest {
-    
     public static void main(String[] args) {
-        Book book1 = new Book("Title1", "Author1");
-        book1.display();
+        // Creating publishers
+        Publisher publisher1 = new Publisher("Publisher A", "City A");
+        Publisher publisher2 = new Publisher("Publisher B", "City B");
 
-        Ebook ebook2 = new Ebook("Title2", "Author2", "Ebook");
-        ebook2.display();
+        // Creating writers
+        Writer writer1 = new Writer("J.R.R.", "Tolkien", "Fantasy");
+        Writer writer2 = new Writer("George", "Orwell", "Dystopian Fiction");
+        Writer writer3 = new Writer("Harper", "Lee", "Fiction");
 
-        Audiobook audiobook1 = new Audiobook("Title3", "Author3", 80, 20);
-        audiobook1.display();
+        // Creating a library
+        Library library = new Library();
+
+        // Creating instances of Book, Ebook, and Audiobook with respective authors,
+        // publishers, and year of publication
+        Book book = new Book("The Hobbit", writer1, publisher1, 1937);
+        Ebook ebook1 = new Ebook("1984", writer2, publisher2, 1949, "1984_file.pdf");
+        Ebook ebook2 = new Ebook("To Kill a Mockingbird", writer3, publisher1, 1960, "mockingbird_file.pdf");
+        Audiobook audiobook = new Audiobook("The Lord of the Rings", writer1, publisher2, 1954, 11, 30);
+
+        // Adding items to the library
+        library.addItem(book);
+        library.addItem(ebook1);
+        library.addItem(ebook2);
+        library.addItem(audiobook);
+
+        // Displaying the contents of the library
+        library.displayLibraryContents();
     }
 }

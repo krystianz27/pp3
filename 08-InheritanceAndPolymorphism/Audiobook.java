@@ -1,8 +1,10 @@
 public class Audiobook extends Book {
-    private int minutes, seconds;
+    private int minutes;
+    private int seconds;
 
-    Audiobook(String title, String author, int minutes, int seconds) {
-        super(title, author);
+    public Audiobook(String title, Writer author, Publisher publisher, int yearOfPublication, int minutes,
+            int seconds) {
+        super(title, author, publisher, yearOfPublication);
         this.minutes = minutes;
         this.seconds = seconds;
     }
@@ -23,8 +25,14 @@ public class Audiobook extends Book {
         this.seconds = seconds;
     }
 
+    @Override
     public void display() {
-        System.out.println(getTitle() +" " + getAuthor() + " " + minutes + " " + seconds);
-    
+        System.out.println("Title: " + getTitle());
+        System.out.println("Author: " + getAuthor().getFirstName() + ", " + getAuthor().getLastName());
+        System.out.println("Literary Genre: " + getAuthor().getLiteraryGenre());
+        System.out.println("Publisher: " + getPublisher().getName() + ", " + getPublisher().getCity());
+        System.out.println("Year of Publication: " + getYearOfPublication());
+        System.out.println("Duration: " + minutes + " minutes " + seconds + " seconds");
+        System.out.println();
     }
 }

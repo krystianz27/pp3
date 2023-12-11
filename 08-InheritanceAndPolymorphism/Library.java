@@ -1,20 +1,22 @@
 import java.util.ArrayList;
 
 public class Library {
+    private ArrayList<Book> items;
 
-    public static void main(String[] args) {
-        ArrayList<Book> books = new ArrayList<Book>();
+    public Library() {
+        items = new ArrayList<>();
+    }
 
-        Book book1 = new Book("Title1", "Author1");
-        Ebook ebook2 = new Ebook("Title2", "Author2", "Ebook");
-        Audiobook audiobook1 = new Audiobook("Title3", "Author3", 80, 20);
+    public void addItem(Book item) {
+        items.add(item);
+    }
 
-        books.add(book1);
-        books.add(ebook2);
-        books.add(audiobook1);
-
-        for (Book book : books) {
-            book.display();  
+    public void displayLibraryContents() {
+        System.out.println("Library Contents:");
+        for (Book item : items) {
+            item.display();
+            // System.out.println(item); #print memmory address because item is instance of
+            // Book class
         }
     }
 }

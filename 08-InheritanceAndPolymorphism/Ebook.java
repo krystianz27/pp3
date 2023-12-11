@@ -1,21 +1,23 @@
 public class Ebook extends Book {
-    private String filename;
+    private String fileName;
 
-    Ebook(String title, String author, String filename){
-        super(title, author);
-        this.filename = filename;
+    public Ebook(String title, Writer author, Publisher publisher, int yearOfPublication, String fileName) {
+        super(title, author, publisher, yearOfPublication);
+        this.fileName = fileName;
     }
 
-    public String getFilename() {
-        return filename;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setFileName(String newFileName) {
+        this.fileName = newFileName;
     }
 
+    @Override
     public void display() {
-        System.out.println(getTitle() +" " + getAuthor() + " " + filename);
+        super.display();
+        System.out.println("File Name: " + fileName);
+        System.out.println();
     }
-
 }
