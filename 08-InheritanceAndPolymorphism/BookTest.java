@@ -21,9 +21,10 @@ public class BookTest {
 
         // Adding items to the library
         library.addItem(book);
-        library.addItem(ebook1);
-        library.addItem(ebook2);
-        library.addItem(audiobook);
+        // library.addItem(ebook1);
+        // library.addItem(ebook2);
+        // library.addItem(audiobook);
+        // publisher1.setCity("City C"); #It affects on each relation
 
         // Displaying the contents of the library
         library.displayLibraryContents();
